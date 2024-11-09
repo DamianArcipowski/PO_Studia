@@ -1,6 +1,128 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 public class Class3 {
+
+    public static void trojkipitagorejskie(int n) {
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < n; j++) {
+                for (int k = 1; k < n; k++) {
+                    int powI = (int) Math.pow(i, 2);
+                    int powJ = (int) Math.pow(j, 2);
+                    int powK = (int) Math.pow(k, 2);
+                    if (powI + powJ == powK) {
+                        System.out.println(i + " " + j + " " + k);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void funKwaRozwiazania(int n) {
+
+    }
+
+    public static void funKwaDelta(int n) {
+
+    }
+
+    public static void liczbyPierwsze(int n) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        for (int i = 2; i < n; i++) {
+            for (int j = 2; j <= i; j++) {
+                if (i % j == 0) {
+                    numbers.add(i);
+                }
+            }
+            if (numbers.size() == 1) {
+                System.out.println(numbers.get(0));
+            }
+            numbers.clear();
+        }
+    }
+
+    public static void liczbyPodzielne(int m, int n) {
+        String baseMin = "1";
+        String baseMax = "9";
+
+        String zeros = "";
+        for (int i = 1; i < m; i++) {
+            zeros += "0";
+            baseMax += "9";
+        }
+
+        baseMin += zeros;
+
+        int min = Integer.valueOf(baseMin);
+        int max = Integer.valueOf(baseMax);
+
+        for (int i = min; i <= max; i++) {
+            if (i % n == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    public static void piramida(int n, int variant) {
+
+    }
+
+    public static int silnia(int n) {
+        if (n < 2) {
+            return 1;
+        }
+
+        return n * silnia(n - 1);
+    }
+
+    public static int silniaPodwojna(int n) {
+        if (n < 2) {
+            return 1;
+        }
+
+        return n * silniaPodwojna(n - 2);
+    }
+
+    public static int silniaWielokrotna(int m, int n) {
+        if (n < 2) {
+            return 1;
+        }
+
+        return n * silniaWielokrotna(m, n - m);
+    }
+
+    public static int dwumianNewtona(int n, int k) {
+        return silnia(n) / (silnia(k) * silnia(n - k));
+    }
+
+    public static void ciagFibonacciego(int n) {
+        int a = 0;
+        int b = 1;
+        int temp;
+
+        for (int i = 0; i < n; i++) {
+            b += a;
+            a = b - a;
+            System.out.println(a);
+        }
+    }
+
+    public static boolean czyPierwsza(int n) {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                if (i % j == 0) {
+                    numbers.add(i);
+                }
+            }
+            if (numbers.size() == 1) {
+                return true;
+            }
+        }
+
+        return false;
+        //DO POPRAWY!
 
     public static void piramida(int n, int variant) {
 
@@ -135,5 +257,5 @@ public class Class3 {
         //czyPalindrom(n);
         System.out.println(czyDoskonala(28));
         NWD(21, 4);
-    }
+    }*/
 }
