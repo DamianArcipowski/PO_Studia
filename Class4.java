@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Class4 {
@@ -16,7 +16,39 @@ public class Class4 {
     }
 
     public static void wypiszTablice(int[] tab, int n, int m) {
+        int[] newTab;
 
+        if (n * m <= tab.length) {
+            newTab = new int[tab.length];
+            newTab = tab.clone();
+        }
+        else {
+            newTab = new int[n * m];
+            
+            for (int i = 0; i < tab.length; i++) {
+                newTab[i] = tab[i];
+            }
+
+            for (int i = newTab.length; i < n * m; i++) {
+                newTab[i] = 0;
+            }
+        }
+
+        int counter = 0;
+        
+        for (int i = 0; i < newTab.length; i++) {
+            counter++;
+
+            if (i % m == 0) 
+                System.out.print("[ " + newTab[i]);
+            else if (counter == m) {
+                System.out.print(" " + newTab[i] + " ]\n");
+                counter = 0;
+            }
+            else
+                System.out.print(" " + newTab[i]);
+
+        }
     }
 
     public static void ileNieparzystych(int[] tab) {
@@ -109,7 +141,25 @@ public class Class4 {
     }
 
     public static void ileUnikalnych(int[] tab) {
+        int uniqueCounter = 0;
+        int tempUnique;
+        int tempCounter = 0;
 
+        for (int i = 0; i < tab.length; i++) {
+            tempUnique = tab[i];
+
+            for (int j = 0; j < tab.length; j++) {
+                if (tab[j] == tempUnique)
+                    tempCounter++;
+            }
+
+            if (tempCounter <= 1)
+                uniqueCounter++;
+
+            tempCounter = 0;
+        }
+
+        System.out.println("Unikalne: " + uniqueCounter);
     }
 
     public static void sumaDodatnich(int[] tab) {
@@ -172,12 +222,48 @@ public class Class4 {
         double sum = 0;
 
         for (int i = 0; i < tab.length; i++) {
-            sum += (double) (1 / tab[i]);
+            sum +=  (1.0 / tab[i]);
         }
 
         double avg = tab.length / sum;
 
         System.out.println("Średnia harmoniczna: " + avg);
+    }
+
+    public static int[] funkcjaLiniowa(int[] tab, int a, int b) {
+        int[] values = new int[tab.length];
+
+        for (int i = 0; i < tab.length; i++) {
+            values[i] = a * tab[i] + b;
+        }
+
+        System.out.println("Wartości dla funkcji liniowej: " + Arrays.toString(values));
+
+        return values;
+    }
+
+    public static int[] funkcjaKwadratowa(int[] tab, int a, int b, int c) {
+        int[] values = new int[tab.length];
+
+        for (int i = 0; i < tab.length; i++) {
+            values[i] = a * (int) Math.pow(tab[i], 2) + b * tab[i] + c;
+        }
+
+        System.out.println("Wartości dla funkcji kwadratowej: " + Arrays.toString(values));
+
+        return values;
+    }
+
+    public static int[] funkcjaWykladnicza(int[] tab, int a) {
+        int[] values = new int[tab.length];
+
+        for (int i = 0; i < tab.length; i++) {
+            values[i] = (int) Math.pow(a, tab[i]);
+        }
+
+        System.out.println("Wartości dla funkcji wykładniczej: " + Arrays.toString(values));
+
+        return values;
     }
 
     public static int[] funkcjaSignum(int[] tab) {
@@ -191,6 +277,8 @@ public class Class4 {
             else
                 signum[i] = -1;
         }
+
+        System.out.println("Signum: " + Arrays.toString(signum));
 
         return signum;
     }
@@ -232,25 +320,34 @@ public class Class4 {
             idx++;
         }
 
-        for (int i = 0; i < tab.length; i++) {
-            System.out.println("Initial array: " + tab[i]);
-            System.out.println("Reversed array: " + reversedArr[i]);
-        }
+        System.out.println("Initial array: " + Arrays.toString(tab));
+        System.out.println("Reversed array: " + Arrays.toString(reversedArr));
     }
 
     public static void odwrocTablice(int[] tab, int indeksStart, int indeksStop) {
-        int reversedArr[] = new int[tab.length];
+        int reversedSubArr[] = new int[tab.length];
         int idx = 0;
 
-        for (int i = tab.length - 1; i >= 0; i--) {
-            reversedArr[idx] = tab[i];
+        for (int i = indeksStop; i >= indeksStart; i--) {
+            reversedSubArr[idx] = tab[i];
             idx++;
         }
 
+        int finalArray[] = new int[tab.length];
+        idx = 0;
+
         for (int i = 0; i < tab.length; i++) {
-            System.out.println("Initial array: " + tab[i]);
-            System.out.println("Reversed array: " + reversedArr[i]);
+            if (i < indeksStart || i > indeksStop) 
+                finalArray[i] = tab[i];
+            else {
+                finalArray[i] = reversedSubArr[idx];
+                idx++;
+            }
+                
         }
+
+        System.out.println("Initial array:  " + Arrays.toString(tab));
+        System.out.println("Reversed array: " + Arrays.toString(finalArray));
     }
 
     public static double[] generujZakres(int n, int minWartosc, int maxWartosc) {
@@ -272,7 +369,7 @@ public class Class4 {
 
     public static void main(String[] args) {
         generujTablice(5, 2, 4);
-        //wypiszTablice();
+        wypiszTablice(generujTablice(12, 1, 5), 5, 3);
         ileNieparzystych(generujTablice(5, 1, 10));
         ileParzystych(generujTablice(5, 1, 10));
         ileDodatnich(generujTablice(5, -5, 10));
@@ -280,20 +377,21 @@ public class Class4 {
         ileUjemnych(generujTablice(5, -5, 10));
         ileMaxymalnych(generujTablice(10, 5, 10));
         ileMinimalnych(generujTablice(10, 5, 10));
-        //ileUnikalnych();
-        generujZakres(7, 5, 20);
+        ileUnikalnych(generujTablice(10, 0, 10));
         sumaDodatnich(generujTablice(5, -5, 10));
         sumaUjemnych(generujTablice(5, -5, 10));
         sumaOdwrotnosci(generujTablice(5, 1, 3));
         sredniaArytmetyczna(generujTablice(5, 1, 5));
         sredniaGeometryczna(generujTablice(5, 1, 5));
-        //funkcjaLiniowa();
-        //funkcjaKwadratowa();
-        //funkcjaWykladnicza();
-        System.out.println(funkcjaSignum(generujTablice(8, -5, 10)));
+        sredniaHarmoniczna(generujTablice(5, 1, 5));
+        funkcjaLiniowa(generujTablice(5, 1, 5), 2, 3);
+        funkcjaKwadratowa(generujTablice(5, 1, 5), 2, 3, 4);
+        funkcjaWykladnicza(generujTablice(5, 1, 5), 2);
+        funkcjaSignum(generujTablice(8, -5, 10));
         najdluzszyCiagDodatnich(generujTablice(10, -5, 5));
         najdluzszyCiagUjemnych(generujTablice(10, -5, 5));
         odwrocTablice(generujTablice(5, 1, 5));
-        //odwrocTablice(generujTablice(8, 0, 5), 2, 4);
+        odwrocTablice(generujTablice(9, 1, 10), 2, 5);
+        generujZakres(7, 5, 20);
     }
 }
