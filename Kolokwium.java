@@ -1,4 +1,4 @@
-public class Main {
+public class Kolokwium {
 
     public static boolean czyCiagArytmetyczny(int[] tab) {
         int diff = tab[1] - tab[0];
