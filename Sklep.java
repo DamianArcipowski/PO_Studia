@@ -1,10 +1,18 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Sklep {
     ArrayList<Produkt> produkty;
+    String nazwaSklepu;
+    Date dataPowstania;
+    Magazyn magazynSklepu;
 
-    public Sklep(ArrayList<Produkt> produkty) {
+    public Sklep(ArrayList<Produkt> produkty, String nazwaSklepu, Date dataPowstania, Magazyn magazynSklepu) {
         this.produkty = produkty;
+        this.nazwaSklepu = nazwaSklepu;
+        //if (dataPowstania > ) to finish
+        this.dataPowstania = dataPowstania;
+        this.magazynSklepu = magazynSklepu;
     }
 
     public void dodajProdukt(Produkt produkt) {

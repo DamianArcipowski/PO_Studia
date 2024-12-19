@@ -33,8 +33,6 @@ public class Klient {
         return totalPriceForAllOrders;
     }
 
-    //dodać Adres
-
     @Override
     public boolean equals(Object obj) {
 
@@ -45,6 +43,7 @@ public class Klient {
         if ((this == klient) && (this.imie == klient.imie) && (this.nazwisko == klient.nazwisko) && (this.adres == klient.adres)) {
             return true;
         }
+
         return false;
     }
 }

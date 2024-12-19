@@ -26,14 +26,11 @@ public class Adres {
         System.out.println(ulica + " " + numerDomu + " " + numerMieszkania);
     }
 
-    //public void przed() {} ?
+    public String przed(Adres adres) {
+        String adres1Str = this.kodPocztowy.replace("-", "");
+        String adres2Str = adres.kodPocztowy.replace("-", "");
 
-    @Override
-    public String toString() {
-        if (numerMieszkania == "")
-            return kodPocztowy + " " + miasto + " " + ulica + " " + numerDomu;
-        else
-            return kodPocztowy + " " + miasto + " " + ulica + " " + numerDomu + " " + numerMieszkania;
+        return Integer.parseInt(adres1Str) < Integer.parseInt(adres2Str) ? "Przed" : "Po";
     }
 
     /*@Override

@@ -55,6 +55,8 @@ public class Main {
             }
         };
         Adres adresKlienta = new Adres("Leśna", "13B", "Olsztyn", "10-250");
+        Adres adresKlienta2 = new Adres("Agrestowa", "13B", "Olsztyn", "10-251");
+        System.out.println(adresKlienta.przed(adresKlienta2));
         Klient klient1 = new Klient("Jan", "Kowalski", testZamowien, adresKlienta);
         klient1.wyswietlHistorieZamowien();
         System.out.println("Łączny koszt zamówień: " + klient1.obliczLacznyKosztZamowien());
@@ -67,7 +69,7 @@ public class Main {
                 add(p3);
             }
         };
-        Sklep tesco = new Sklep(listaProduktow);
+        //Sklep tesco = new Sklep(listaProduktow); zaktualizować
         tesco.dodajProdukt(p2);
         tesco.wyswietlOferty();
         System.out.println("Zakupy: ");   
