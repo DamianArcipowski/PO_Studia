@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,7 +14,6 @@ public class Main {
         p1.dodajDoMagazynu(15);
         p1.usunZMagazynu(10);
         p1.wyswietlInformacje();
-        //p1.usunZMagazynu(200); exception
         System.out.println("----------------------------------");
         HashMap<Produkt, Integer> zakupy = new HashMap<Produkt, Integer>();
         zakupy.put(p2, 10);
@@ -37,14 +38,14 @@ public class Main {
         zamow1.wyswietlZamowienie();
         System.out.println("Przed zwrotem produktu: ");
         zamow1.wyswietlZamowienie();
-        zamow1.koszykZakupowy.wyswietlZawartoscKoszyka();
-        zamow1.koszykZakupowy.obliczCalkowitaWartosc();
+        zamow1.getKoszykZakupowy().wyswietlZawartoscKoszyka();
+        zamow1.getKoszykZakupowy().obliczCalkowitaWartosc();
         System.out.println(p1.toString());
         zamow1.zwrocProdukt(p1, 10);
         System.out.println("Po zwrocie produktu: ");
         zamow1.wyswietlZamowienie();
-        zamow1.koszykZakupowy.wyswietlZawartoscKoszyka();
-        zamow1.koszykZakupowy.obliczCalkowitaWartosc();
+        zamow1.getKoszykZakupowy().wyswietlZawartoscKoszyka();
+        zamow1.getKoszykZakupowy().obliczCalkowitaWartosc();
         System.out.println(p1.toString());
         Zamowienie zamow2 = new Zamowienie(k2, "Nowe", testPlatnosc);
         System.out.println("----------------------------------");
@@ -63,13 +64,21 @@ public class Main {
         Klient klient2 = new Klient("Jan", "Kowalski", testZamowien, adresKlienta);
         klient1.dodajZamowienie(zamow2);
         System.out.println("----------------------------------");
-        ArrayList<Produkt> listaProduktow = new ArrayList<Produkt>() {
+        ArrayList<Produkt> listaProduktowMagazyn = new ArrayList<Produkt>() {
             {
                 add(p1);
                 add(p3);
             }
         };
-        //Sklep tesco = new Sklep(listaProduktow); zaktualizować
+        ArrayList<Produkt> listaProduktow = new ArrayList<Produkt>() {
+            {
+                add(p2);
+            }
+        };
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate shopDate = LocalDate.parse("2015-02-20", formatter);
+        Magazyn warehouse = new Magazyn(listaProduktowMagazyn, 2);
+        Sklep tesco = new Sklep(listaProduktow, "Tesco", shopDate, warehouse);
         tesco.dodajProdukt(p2);
         tesco.wyswietlOferty();
         System.out.println("Zakupy: ");   
@@ -82,10 +91,10 @@ public class Main {
         Platnosc platnosc1 = new Platnosc(15.24, "Nowa");
         Platnosc platnosc2 = new Platnosc(17.00, "Nowa");
         System.out.println("----------------------------------");
-        System.out.println("Testy metody equals:"); //poprawić!
-        System.out.println(p3.equals(p4)); //false
-        System.out.println(platnosc1.equals(platnosc2)); //false
-        System.out.println(klient1.equals(klient2)); //true
+        System.out.println("Testy metody equals:");
+        System.out.println(p3.equals(p4));
+        System.out.println(platnosc1.equals(platnosc2));
+        System.out.println(klient1.equals(klient2));
         System.out.println("----------------------------------");
         Adres adres1 = new Adres("Polna", "51A", "Olsztyn", "10-250");
         adres1.pokaz();
@@ -93,5 +102,6 @@ public class Main {
         adres2.pokaz();
         System.out.println(adres1.toString());
         System.out.println(adres2.toString());
+        System.out.print(k1.getClass());
     }
 }
