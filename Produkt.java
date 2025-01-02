@@ -62,7 +62,7 @@ public class Produkt {
     }
 
     public double zwrocCenePoNazwie(String nazwa) {
-        if (this.nazwa == nazwa)
+        if (this.nazwa.equals(nazwa))
             return this.cena;
 
         return 0;
@@ -88,7 +88,7 @@ public class Produkt {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         Produkt produkt = (Produkt) obj;
-        if ((this == produkt) && (this.nazwa == produkt.nazwa) && (this.cena == produkt.cena)) {
+        if ((this == produkt) && (this.nazwa.equals(produkt.nazwa)) && (this.cena == produkt.cena)) {
             return true;
         }
 

@@ -77,7 +77,7 @@ public class Sklep {
 
     public Produkt wyszukajProduktu(String nazwa) {
         for (Produkt produkt : produkty) {
-            if (produkt.getNazwa() == nazwa)
+            if (produkt.getNazwa().equals(nazwa))
                 return produkt;
         }
 

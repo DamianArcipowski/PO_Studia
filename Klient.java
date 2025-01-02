@@ -1,39 +1,14 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Klient {
-    private String imie;
-    private String nazwisko;
+public class Klient extends Osoba {
     private ArrayList<Zamowienie> listaZamowien;
     private Adres adres;
 
     public Klient(String imie, String nazwisko, ArrayList<Zamowienie> listaZamowien, Adres adres) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
+        super(imie, nazwisko);
         this.listaZamowien = listaZamowien;
         this.adres = adres;
-    }
-
-    public String getImie() {
-        return imie;
-    }
-
-    public void setImie(String imie) {
-        if (imie == null || imie.isEmpty())
-            throw new IllegalArgumentException("Imie nie może być puste!");
-
-        this.imie = imie;
-    }
-
-    public String getNazwisko() {
-        return nazwisko;
-    }
-
-    public void setNazwisko(String nazwisko) {
-        if (nazwisko == null || nazwisko.isEmpty())
-            throw new IllegalArgumentException("Nazwisko nie może być puste!");
-
-        this.nazwisko = nazwisko;
     }
 
     public ArrayList<Zamowienie> getListaZamowien() {
@@ -80,7 +55,7 @@ public class Klient {
 
     @Override
     public String toString() {
-        return "Klient [imie=" + imie + ", nazwisko=" + nazwisko + ", listaZamowien=" + listaZamowien + ", adres="
+        return "Klient [imie=" + getImie() + ", nazwisko=" + getNazwisko() + ", listaZamowien=" + listaZamowien + ", adres="
                 + adres + "]";
     }
 
@@ -89,7 +64,7 @@ public class Klient {
 
     @Override
     public int hashCode() {
-        return Objects.hash(imie, nazwisko, adres);
+        return Objects.hash(super.hashCode(), adres);
     }
 
     @Override
@@ -99,7 +74,7 @@ public class Klient {
         if(obj == null || getClass() != obj.getClass()) return false;
 
         Klient klient = (Klient) obj;
-        if ((this == klient) && (this.imie == klient.imie) && (this.nazwisko == klient.nazwisko) && (this.adres == klient.adres)) {
+        if ((this == klient) && (this.getImie().equals(klient.getImie())) && (this.getNazwisko().equals(klient.getNazwisko())) && (this.adres == klient.adres)) {
             return true;
         }
 

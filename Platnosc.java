@@ -55,7 +55,7 @@ public class Platnosc {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         Platnosc platnosc = (Platnosc) obj;
-        if ((this == platnosc) && (this.kwota == platnosc.kwota) && (this.statusPlatnosci == platnosc.statusPlatnosci)) {
+        if ((this == platnosc) && (this.kwota == platnosc.kwota) && (this.statusPlatnosci.equals(platnosc.statusPlatnosci))) {
             return true;
         }
 

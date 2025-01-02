@@ -53,7 +53,7 @@ public class Zamowienie {
     }
 
     public void finalizujZamowienie() {
-        if (platnosc.getStatusPlatnosci() == "Opłacone")
+        if (platnosc.getStatusPlatnosci().equals("Opłacone"))
             statusZamowienia = "Gotowe do wysyłki";
     }
 
