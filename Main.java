@@ -103,5 +103,34 @@ public class Main {
         System.out.println(adres1.toString());
         System.out.println(adres2.toString());
         System.out.print(k1.getClass());
+        System.out.println("\n----------------------------------");
+        Jablko jablko = new Jablko("Champion", 2.99, 1000);
+        jablko.smak();
+        jablko.umyj();
+        jablko.zjedz();
+        Cytryna cytryna = new Cytryna("Zwyczajna", 6.50, 600);
+        cytryna.smak();
+        cytryna.umyj();
+        cytryna.zjedz();
+        Koszulka koszulka = new Koszulka("T-shirt Nike", 99, 30);
+        koszulka.wypierz();
+        koszulka.zaloz();
+        koszulka.wyprasuj();
+        koszulka.wysusz();
+        koszulka.zniszcz();
+        Bluza bluza = new Bluza("Hoodie Nike", 215, 20);
+        bluza.wypierz();
+        bluza.zaloz();
+        bluza.wyprasuj();
+        bluza.wysusz();
+        bluza.zniszcz();
+        PlatkiKukurydziane platkiKukurydziane = new PlatkiKukurydziane("Płatki kukurydziane", 9.50, 300);
+        System.out.println(platkiKukurydziane.getNazwa());
+        SerZolty serZolty = new SerZolty("Ser żółty", 9.90, 300);
+        System.out.println(serZolty.getNazwa());
+        Biurko biurko = new Biurko("Biurko", 350, 25);
+        System.out.println(biurko.getNazwa());
+        Komputer komputer = new Komputer("Komputer", 2199, 15);
+        System.out.println(komputer.getNazwa());
     }
 }
